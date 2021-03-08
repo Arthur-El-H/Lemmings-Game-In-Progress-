@@ -1,0 +1,72 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!78 &1
+TagManager:
+  serializedVersion: 2
+  tags:
+  - boardNumberPalette
+  - imUhrzeigersinn
+  - Ziel
+  - ggUhrzeigersinn
+  - leer
+  - Flamme
+  - OU
+  - OL
+  - OR
+  - UL
+  - UR
+  - LR
+  - ORUL
+  - ORU
+  - ORL
+  - OUL
+  - RUL
+  - L
+  - O
+  - R
+  - U
+  - 1L
+  - 2L
+  - 1H
+  - 2H
+  - 1U
+  - 2U
+  - 1R
+  - 2R
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - 
+  - Water
+  - UI
+  - 
+  - 
+  - Auswahl
+  - Lemming
+  - Felder
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  m_SortingLayers:
+  - name: Default
+    uniqueID: 0
+    locked: 0
