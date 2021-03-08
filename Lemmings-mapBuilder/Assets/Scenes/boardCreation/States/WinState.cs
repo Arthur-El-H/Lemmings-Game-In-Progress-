@@ -12,6 +12,7 @@ public class WinState : IState
 
     public void Enter()
     {
+        owner.closeTip.SetActive(false);
         owner.Win.SetActive(true);
         owner.newMap.SetActive(true);
     }

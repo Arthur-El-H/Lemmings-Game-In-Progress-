@@ -27,11 +27,18 @@ public class BoardChoosing : IState
         numberPalette = owner.numberPalette;
         ChooseButton = owner.chooseButton;
         owner.howManyBoards.SetActive(true);
+        owner.closeTip.SetActive(false);
+
 
         Board_2 = owner.Board_2;
         Board_4 = owner.Board_4;
         Board_6 = owner.Board_6;
         Board_8 = owner.Board_8;
+
+        Board_2.unChoose();
+        Board_4.unChoose();
+        Board_6.unChoose();
+        Board_8.unChoose();
 
         numberPalette.SetActive(true);
         ChooseButton.SetActive(true);
@@ -61,7 +68,6 @@ public class BoardChoosing : IState
             {
                 newChosen = (boardNumberChoosing) hit.collider.GetComponent(typeof(boardNumberChoosing));
                 chooseButton = (chooseButton) hit.collider.GetComponent(typeof(chooseButton));
-                Debug.Log(chooseButton);
                 if (newChosen)
                 {
                     Board_2.unChoose();
@@ -69,7 +75,6 @@ public class BoardChoosing : IState
                     Board_6.unChoose();
                     Board_8.unChoose();
                     newChosen.choose();
-                    Debug.Log("New Chosen ist " + newChosen);
 
                     Chosen = newChosen;
                 }

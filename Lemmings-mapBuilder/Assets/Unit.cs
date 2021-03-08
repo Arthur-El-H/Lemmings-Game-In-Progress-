@@ -24,11 +24,14 @@ public class Unit : MonoBehaviour
     public GameObject tryAgain;
     public GameObject newMap;
     public GameObject bedingung;
+    public GameObject closeTip;
 
     public feldPalette feldPalette;
 
 
-
+    private void Awake()
+    {
+    }
     public void Start()
     {
         numberPalette.SetActive(false);
@@ -40,5 +43,9 @@ public class Unit : MonoBehaviour
     public void Update()
     {
         stateMachine.Update();
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Application.Quit();
+        }    
     }
 }

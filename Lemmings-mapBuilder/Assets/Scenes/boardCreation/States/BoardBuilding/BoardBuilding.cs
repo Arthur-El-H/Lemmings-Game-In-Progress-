@@ -21,6 +21,8 @@ public class BoardBuilding : IState
         owner.testButton.SetActive(true);
         owner.outOfService.SetActive(true);
         owner.bedingung.SetActive(true);
+        owner.closeTip.SetActive(true);
+
 
         buildBoards(board_Number);
 

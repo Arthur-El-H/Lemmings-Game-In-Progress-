@@ -24,6 +24,8 @@ public class lossState : IState
 
         tryMap = owner.tryAgain.GetComponent<tryMap>();
         createAnother = owner.newMap.GetComponent<createAnother>();
+        owner.closeTip.SetActive(false);
+
     }
 
     public void Execute()
@@ -36,9 +38,10 @@ public class lossState : IState
             owner.dropLoss.SetActive(false); 
             owner.tryAgain.SetActive(true);
             owner.newMap.SetActive(true);
+            owner.closeTip.SetActive(true);
         }
 
-        if(tryMap.tryMapAgain)
+        if (tryMap.tryMapAgain)
         {
             owner.stateMachine.ChangeState(new TestingState(owner, testedBoards));
         }
@@ -57,5 +60,6 @@ public class lossState : IState
 
         owner.tryAgain.SetActive(false);
         owner.newMap.SetActive(false);
+
     }
 }
