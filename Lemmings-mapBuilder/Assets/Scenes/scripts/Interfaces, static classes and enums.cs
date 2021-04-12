@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -7,6 +8,11 @@ public interface IState
     void Enter();
     void Execute();
     void Exit();
+}
+
+public interface IBoardsOwner
+{
+    Save getBoards();
 }
 
 public interface IFeld
@@ -21,6 +27,6 @@ public enum Direction { Up, Right, Down, Left, None };
 
 public class twoLists
 {
-    public List<dragableLemming> lemmings;
-    public List<Direction> directions;
+    public List<dragableLemming> lemmings = new List<dragableLemming>();
+    public List<Direction> directions = new List<Direction>();
 }
