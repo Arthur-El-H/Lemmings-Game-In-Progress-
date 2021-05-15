@@ -44,7 +44,7 @@ public class Board : MonoBehaviour
 
     public dragableLemming lemming;
     public int lemmingPos;
-
+    public int zielCount;
 
     public void Awake()
     {
@@ -86,7 +86,7 @@ public class Board : MonoBehaviour
             board[i].boardPos = i;
             boardTags.Add("leer");
         }
-
+        
         boardFelder = new List<IFeld>();
         lemmingPos = 25;
     }
@@ -109,9 +109,7 @@ public class Board : MonoBehaviour
                 Destroy(platzhalter.currentField);
              }
              Destroy(platzhalter);
-
          }
          Destroy(this.gameObject);
     }
-
 }

@@ -39,7 +39,6 @@ public class BoardChoosing : IState
 
         numberPalette.SetActive(true);
         ChooseButton.SetActive(true);
-        Debug.Log("    Enter    ");
     }
 
     public void Execute()

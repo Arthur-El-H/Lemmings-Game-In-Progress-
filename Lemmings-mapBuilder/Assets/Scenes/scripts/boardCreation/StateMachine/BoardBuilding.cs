@@ -44,22 +44,17 @@ public class BoardBuilding : IState
             boards[i].delete();
         }
     }
-    /*
-    private bool checkForZiele(List<Board> boards)
+    
+    public bool checkForZiele(List<Board> boards)
     {
-        int var = 0;
+        bool Ziel = true;
         foreach (Board board in boards)
         {
-            foreach (string tag in board.boardTags)
-            {
-                if (tag == "Ziel") { var++;}
-            }
+            if (board.zielCount != 1) Ziel = false;
         }
-        test.goingToTest = false;
-        if(var == boards.Count) { return true; }
-        else { return false; }
+        return Ziel;
     }
-    */
+    
     void enableButtons(bool enable)
     {
         owner.FeldPalette.SetActive(enable);

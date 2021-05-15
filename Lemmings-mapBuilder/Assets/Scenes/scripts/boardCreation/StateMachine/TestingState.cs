@@ -3,7 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-
 public class TestingState : IState
 {
     Unit owner;
@@ -25,12 +24,16 @@ public class TestingState : IState
         test_boards = owner.BoardBuilder.buildBoardsWithTags(owner.boardsToSave(boardInput));
 
         owner.MoveManager.boardInput = boardInput;
-        owner.MoveManager.currentBoards = test_boards;
+        owner.MoveManager.setCurrentBoards(test_boards);
+        owner.MoveManager.setIsPlaying(false);
+        owner.MoveManager.initNextToFire();
+        owner.MoveManager.initWinFields();
 
         foreach (Board board in test_boards)
         {
             board.lemming.Feld = board.boardFelder[board.lemming.currentFeld];
         }
+        owner.destroyColliders(test_boards);
     }
 
     public void Execute()
@@ -58,6 +61,8 @@ public class TestingState : IState
                     moveLemmings(Direction.Left);
             }
         }
+        foreach (dragableLemming lemming in startingLemmings) { lemming.lemmingUpdate(); } // was missing for some reason
+
     }
 
     public void Exit()
@@ -75,6 +80,7 @@ public class TestingState : IState
         for (int i = 0; i < test_boards.Count; i++)
         {
             startingLemmings.Add(test_boards[i].lemming);
+            test_boards[i].lemming.currentDirection = direction; //was missing for some reason
             startingDirections.Add(direction);
         }
         owner.MoveManager.startManagingMoves(startingLemmings, startingDirections);

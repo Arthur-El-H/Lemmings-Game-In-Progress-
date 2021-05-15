@@ -5,7 +5,7 @@ using UnityEngine;
 public class WinState : IState, IBoardsOwner
 {
     Unit owner;
-    List<Board> boards = new List<Board>();
+    List<Board> boards;
 
     public WinState(Unit owner, List<Board> boards) { this.owner = owner; this.boards = boards; }
 
@@ -13,27 +13,20 @@ public class WinState : IState, IBoardsOwner
 
     public void Enter()
     {
-        owner.closeTip.SetActive(false);
-
         owner.setBoardsToSave(boards);
-        owner.setCurrentSave(owner.boardsToSave(boards));
-
+        if (!owner.MoveManager.getIsPlaying()) { owner.setCurrentSave(owner.boardsToSave(boards)); }
+        owner.infoGatherer.sendState(oldest_state.Win);
         enableButtons(true);
     }
 
     public void Execute()
     {
-        if (owner.newMap.GetComponent<createAnother>().createAnotherMap)
-        {
-            owner.stateMachine.ChangeState(new StartState(owner, owner.StartScreen));
-        }
     }
 
     public void Exit()
     {
-        owner.Win.SetActive(false);
-        owner.newMap.SetActive(false);
         enableButtons(false);
+        owner.MoveManager.setIsPlaying(false);
     }
 
     public Save getBoards()
@@ -43,9 +36,14 @@ public class WinState : IState, IBoardsOwner
 
     void enableButtons(bool enable)
     {
-        owner.changeMapBtn.SetActive(enable);
-        owner.saveBtn.SetActive(enable);
-        owner.saveMap.SetActive(enable);
-        owner.mapNameField.SetActive(enable);
+        if(!owner.MoveManager.getIsPlaying())
+        {
+            owner.changeMapBtn.SetActive(enable);
+            owner.saveBtn.SetActive(enable);
+            owner.saveMap.SetActive(enable);
+            owner.mapNameField.SetActive(enable);
+        }
+        owner.closeTip.SetActive(enable);
+        owner.backToStartBtn.SetActive(enable);
     }
 }

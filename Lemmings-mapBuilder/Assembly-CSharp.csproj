@@ -63,10 +63,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\BoardBuilder.cs" />
-    <Compile Include="Assets\GameLoader.cs" />
-    <Compile Include="Assets\MoveManager.cs" />
-    <Compile Include="Assets\PlayerSettings.cs" />
     <Compile Include="Assets\Scenes\scripts\Felder_Skripte\Flamme.cs" />
     <Compile Include="Assets\Scenes\scripts\Felder_Skripte\H.cs" />
     <Compile Include="Assets\Scenes\scripts\Felder_Skripte\L.cs" />
@@ -95,9 +91,12 @@
     <Compile Include="Assets\Scenes\scripts\Felder_Skripte\ggUhrzeigersinn.cs" />
     <Compile Include="Assets\Scenes\scripts\Felder_Skripte\imUhrzeigersinn.cs" />
     <Compile Include="Assets\Scenes\scripts\Felder_Skripte\leer.cs" />
+    <Compile Include="Assets\Scenes\scripts\GameLoader.cs" />
     <Compile Include="Assets\Scenes\scripts\Interfaces, static classes and enums.cs" />
+    <Compile Include="Assets\Scenes\scripts\MoveManager.cs" />
     <Compile Include="Assets\Scenes\scripts\Save.cs" />
     <Compile Include="Assets\Scenes\scripts\boardCreation\Board.cs" />
+    <Compile Include="Assets\Scenes\scripts\boardCreation\BoardBuilder.cs" />
     <Compile Include="Assets\Scenes\scripts\boardCreation\Canvas\Test.cs" />
     <Compile Include="Assets\Scenes\scripts\boardCreation\Canvas\boardNumberChoosing.cs" />
     <Compile Include="Assets\Scenes\scripts\boardCreation\Canvas\chooseButton.cs" />
@@ -118,10 +117,13 @@
     <Compile Include="Assets\Scenes\scripts\boardCreation\StateMachine\lossState.cs" />
     <Compile Include="Assets\Scenes\scripts\boardCreation\dragableLemming.cs" />
     <Compile Include="Assets\Scenes\scripts\boardCreation\levelCreator.cs" />
+    <Compile Include="Assets\Scenes\scripts\informationGatherer.cs" />
     <Compile Include="Assets\Scenes\scripts\listOfMapsSave.cs" />
-    <Compile Include="Assets\mapListItem.cs" />
-    <Compile Include="Assets\mapListSaveManager.cs" />
-    <Compile Include="Assets\scrollViewList.cs" />
+    <Compile Include="Assets\Scenes\scripts\mapListItem.cs" />
+    <Compile Include="Assets\Scenes\scripts\mapListSaveManager.cs" />
+    <Compile Include="Assets\Scenes\scripts\scrollViewList.cs" />
+    <Compile Include="Assets\oldest.cs" />
+    <Compile Include="Assets\sentenceDatabank.cs" />
     <Reference Include="Unity.Timeline.Editor">
       <HintPath>C:/Users/aelhu/Documents/GitHub/lemmings_mapBuilder_Prototype/Lemmings-mapBuilder/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
     </Reference>

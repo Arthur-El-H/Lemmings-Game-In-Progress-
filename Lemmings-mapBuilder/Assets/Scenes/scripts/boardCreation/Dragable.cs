@@ -15,25 +15,38 @@ public class Dragable : MonoBehaviour
 
     void OnMouseDown()
     {
-        Debug.Log("you are clicking me");
-        if ( ! (myPlatzhalter == null))
+        feldPalette.isDragging = true;
+        feldPalette.currentTag = this.tag;
+
+        if ((myPlatzhalter != null))
         {
-            myPlatzhalter.respawnEmpty();
-            feldPalette.currentDragged = this.gameObject;
+            //if (this.tag == "Ziel") { myPlatzhalter.transform.parent.GetComponent<Board>().zielCount--; }
+            //myPlatzhalter.respawnEmpty();
+            //feldPalette.currentDragged = this.gameObject;
+            if (Input.GetKey(KeyCode.LeftControl))
+            {
+                feldPalette.currentDragged = Instantiate(this.gameObject, new Vector3(transform.position.x, transform.position.y, 21), Quaternion.identity);
+            }
+
+            else
+            {
+                if (this.tag == "Ziel") { myPlatzhalter.transform.parent.GetComponent<Board>().zielCount--; }
+                myPlatzhalter.respawnEmpty();
+                feldPalette.currentDragged = this.gameObject;
+                if (this.tag != "leer") { feldPalette.decreaseComplexity(); }
+            }
         }
 
         else
         {
             feldPalette.currentDragged = Instantiate(this.gameObject, new Vector3(transform.position.x, transform.position.y, 21), Quaternion.identity);
+            if (this.tag == "Flamme" || this.tag == "Ziel") { feldPalette.informGatherer(); }
         }
 
         feldPalette.currentDragged.GetComponent<SpriteRenderer>().sortingOrder = 3;
         feldPalette.gameObject.layer = 2;
 
         changePaletteVisibility();
-
-        feldPalette.isDragging = true;
-        feldPalette.currentTag = this.tag; 
     }
 
     private void OnMouseUp()
@@ -43,6 +56,7 @@ public class Dragable : MonoBehaviour
         feldPalette.isDragging = false;
         feldPalette.gameObject.layer = 0;
         feldPalette.currentDragged.GetComponent<SpriteRenderer>().sortingOrder = 1;
+        Dragable fPCurrentDragged = feldPalette.currentDragged.GetComponent<Dragable>();
 
         changePaletteVisibility();
 
@@ -51,20 +65,22 @@ public class Dragable : MonoBehaviour
 
         if (platzhalter)
         {
+            string currentFieldTag;
+            if (platzhalter.currentField == null) currentFieldTag = "leer";
+            else currentFieldTag = platzhalter.currentField.tag;
+
+            if (currentFieldTag == "leer" && feldPalette.currentTag != "leer") { feldPalette.increaseComplexity(); }
+            if (currentFieldTag != "leer" && feldPalette.currentTag == "leer") { feldPalette.decreaseComplexity(); }
+
+            if (currentFieldTag == "Ziel" && feldPalette.currentTag != "Ziel") platzhalter.transform.parent.GetComponent<Board>().zielCount--;
+            if (currentFieldTag != "Ziel" && feldPalette.currentTag == "Ziel") platzhalter.transform.parent.GetComponent<Board>().zielCount++;
+
             Destroy(platzhalter.currentField);
             platzhalter.currentField = feldPalette.currentDragged;
             platzhalter.currentField.transform.position = platzhalter.anchorPoint;
             platzhalter.tellBoard(feldPalette.currentTag);
 
-            if (myPlatzhalter == null)
-            {
-                feldPalette.currentDragged.GetComponent<Dragable>().myPlatzhalter = platzhalter;
-            }
-
-            else
-            {
-                myPlatzhalter = platzhalter;
-            }
+            fPCurrentDragged.myPlatzhalter = platzhalter;
         }
         else { Destroy(feldPalette.currentDragged); }
     }

@@ -5,7 +5,6 @@ using UnityEngine;
 public class PlayState : IState
 {
     Unit owner;
-    float time;
     Save save;
     List<Board> boards;
 
@@ -15,22 +14,25 @@ public class PlayState : IState
     private float controlTime;
     private float coolDownTime = .5f;
 
-
-    public PlayState(Unit owner, Save save)
-    {this.owner = owner; this.save = save; }
+    public PlayState(Unit owner, Save save) {this.owner = owner; this.save = save; }
 
     public void Enter()
     {
         boards = new List<Board>();
+        Debug.Log(save.boardTags.Count +  " is how much boards im going to build");
         boards = owner.BoardBuilder.buildBoardsWithTags(save);
 
-        owner.MoveManager.currentBoards = boards;
+        owner.setCurrentSave(save);
+        owner.MoveManager.setCurrentBoards(boards);
+        owner.MoveManager.setIsPlaying(true);
+        owner.MoveManager.initNextToFire();
+        owner.MoveManager.initWinFields();
 
         foreach (Board board in boards)
         {
             board.lemming.Feld = board.boardFelder[board.lemming.currentFeld];
         }
-
+        owner.destroyColliders(boards);
     }
 
     public void Execute()
@@ -59,6 +61,8 @@ public class PlayState : IState
             }
         }
 
+        foreach (dragableLemming lemming in startingLemmings) { lemming.lemmingUpdate(); }
+
     }
 
     public void Exit()
@@ -76,6 +80,7 @@ public class PlayState : IState
         for (int i = 0; i < boards.Count; i++)
         {
             startingLemmings.Add(boards[i].lemming);
+            boards[i].lemming.currentDirection = direction;
             startingDirections.Add(direction);
         }
         owner.MoveManager.startManagingMoves(startingLemmings, startingDirections);

@@ -9,24 +9,16 @@ public class Unit : MonoBehaviour
     public StateMachine stateMachine = new StateMachine();
     public GameObject leeresBrett;
 
-
     public GameObject numberPalette;
     public GameObject chooseButton;
     public boardNumberChoosing Board_2;
     public boardNumberChoosing Board_4;
     public boardNumberChoosing Board_6;
-    public boardNumberChoosing Board_8;
     public GameObject FeldPalette;
     public GameObject StartScreen;
     public GameObject howManyBoards;
-    public GameObject Win;
-    public GameObject fireLoss;
-    public GameObject dropLoss;
-    public GameObject tryAgain;
-    public GameObject newMap;
     public GameObject bedingung;
     public GameObject closeTip;
-    public GameObject trappedLemmingLoss;
 
     public GameObject loadMap;
     public GameObject scrollViewMaps;
@@ -35,6 +27,8 @@ public class Unit : MonoBehaviour
     public GameObject tutBtn;
     public GameObject changeMapBtn;
     public GameObject testBtn;
+    public GameObject backToStartBtn;
+    public GameObject tryMapAgainBtn;
 
     public GameObject mapNameField;
     public GameObject saveMap;
@@ -50,6 +44,7 @@ public class Unit : MonoBehaviour
     public MoveManager MoveManager;
 
     public BoardBuilding currentBoardBuilding;
+    public informationGatherer infoGatherer;
 
     List<Board> boards;
     public void setBoardsToSave(List<Board> newBoards)
@@ -58,17 +53,12 @@ public class Unit : MonoBehaviour
     } //used by winstate
 
     Save currentSave;
-    public void setCurrentSave(Save save) { currentSave = save; }
+    public void setCurrentSave(Save save) { currentSave = save;}
 
-
-    private void Awake()
-    {
-    }
     public void Start()
     {
         stateMachine.ChangeState(new StartState(this, StartScreen));
     }
-
     public void Update()
     {
         stateMachine.Update();
@@ -78,29 +68,30 @@ public class Unit : MonoBehaviour
         }    
     }
 
-    public void goToStartScreen()
-    {
-        stateMachine.ChangeState(new Startscreen(this));
-    }
-
-    public void returnToBuilding()
-    {
-        stateMachine.ChangeState(new BoardBuilding(this, currentSave.boardTags.Count, currentSave));
-    }
-
-    public void goToTesting()
-    {
-        stateMachine.ChangeState(new TestingState(this, currentBoardBuilding.boards));
-    }
     public void LoadMap( string name)
     {
+        BinaryFormatter bf;
+        FileStream file;
+        Save save;
+        if ( (name == "Tutorial 1") || (name == "Tutorial 2") || (name == "Tutorial 3") )
+        {
+            bf = new BinaryFormatter();
+            file = File.Open(Application.streamingAssetsPath + "." + name + ".save", FileMode.Open);
+            save = (Save)bf.Deserialize(file);
+            file.Close();
+            stateMachine.ChangeState(new PlayState(this, save));
+            infoGatherer.sendState(oldest_state.PlayingTutorial);
+            return;
+        }
         Debug.Log("loading " + name);
-        BinaryFormatter bf = new BinaryFormatter();
-        FileStream file = File.Open(Application.persistentDataPath + "." + name + ".save", FileMode.Open);
-        Save save = (Save)bf.Deserialize(file);
+        bf = new BinaryFormatter();
+        file = File.Open(Application.persistentDataPath + "." + name + ".save", FileMode.Open);
+        save = (Save)bf.Deserialize(file);
         file.Close();
         stateMachine.ChangeState(new PlayState(this, save));
+        infoGatherer.sendState(oldest_state.Playing);
     }
+
     public Save CreateSave(string name, List<Board> boards)
     {
         Save save = new Save();
@@ -132,6 +123,24 @@ public class Unit : MonoBehaviour
             goToStartScreen();
         }
     }
+    public void SaveTutorial()
+    {
+        string name = mapNameField.GetComponent<UnityEngine.UI.InputField>().text;
+        if (name == "") { Debug.Log("map needs a name!"); }
+        else
+        {
+            Save save = CreateSave(name, boards);
+
+            BinaryFormatter bf = new BinaryFormatter();
+            FileStream file = File.Create(Application.streamingAssetsPath + "." + name + ".save");
+            bf.Serialize(file, save);
+            file.Close();
+            mapListSaveManager.addToList(name);
+            sendToScrollView(name);
+            Debug.Log("Game Saved");
+            goToStartScreen();
+        }
+    }
     public Save boardsToSave(List<Board> boards)
     {
         Save save = new Save();
@@ -146,6 +155,7 @@ public class Unit : MonoBehaviour
 
         return save;
     }
+
     public void Exit()
     {
         Application.Quit();
@@ -153,6 +163,43 @@ public class Unit : MonoBehaviour
     public void createMap()
     {
         this.stateMachine.ChangeState(new BoardChoosing(this));
+    }
+    public void testAgain()
+    {
+        stateMachine.ChangeState(new TestingState(this, currentBoardBuilding.boards));
+    }
+    public void goToTesting()
+    {
+        Debug.Log("JETZTETLE");
+        if (MoveManager.getIsPlaying()) 
+        { 
+            stateMachine.ChangeState(new PlayState(this, currentSave));
+            infoGatherer.sendState(oldest_state.PlayingAgain);
+        }
+        else
+        {
+            if (currentBoardBuilding.checkForZiele(currentBoardBuilding.boards))
+            {
+                stateMachine.ChangeState(new TestingState(this, currentBoardBuilding.boards));
+                infoGatherer.sendState(oldest_state.Testing, currentBoardBuilding.boards);
+            }
+            else Debug.Log("you need exactly one Ziel per board");
+        }
+    }
+    public void goToStartScreen()
+    {
+        stateMachine.ChangeState(new Startscreen(this));
+    }
+    public void returnToBuilding()
+    {
+        stateMachine.ChangeState(new BoardBuilding(this, currentSave.boardTags.Count, currentSave));
+    }
+    public void destroyColliders(List<Board> boards)
+    {
+        foreach (Board board in boards)
+        {
+            Destroy(board.lemming.GetComponent<CircleCollider2D>());
+        }
     }
     public void fillScrollView()
     {

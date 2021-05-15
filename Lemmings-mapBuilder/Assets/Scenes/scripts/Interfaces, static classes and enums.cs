@@ -25,6 +25,8 @@ public interface IFeld
 }
 public enum Direction { Up, Right, Down, Left, None };
 
+public enum oldest_state { Playing, PlayingAgain, Testing, TestingAgain, PlayingTutorial, Menu, Building, Win, Loss, None };
+
 public class twoLists
 {
     public List<dragableLemming> lemmings = new List<dragableLemming>();
