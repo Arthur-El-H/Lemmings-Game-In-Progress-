@@ -294,6 +294,7 @@ GameObject:
   - component: {fileID: 49170214}
   - component: {fileID: 49170213}
   - component: {fileID: 49170216}
+  - component: {fileID: 49170217}
   m_Layer: 5
   m_Name: Scroll View
   m_TagString: Untagged
@@ -405,6 +406,20 @@ MonoBehaviour:
   mapButton: {fileID: 5592218212338453610, guid: 373e96bc5db55804ca3e82b882bfa387,
     type: 3}
   testMapButton: {fileID: 0}
+--- !u!114 &49170217
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 49170211}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 25ae801318f2cd94c852f7b1fa69461a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  infoGatherer: {fileID: 1250903637}
+  thisButton: scrollView
 --- !u!1 &61083987 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5493670383161130128, guid: aa5597a05b2097748a2adedbc76b158b,
@@ -781,6 +796,7 @@ GameObject:
   - component: {fileID: 231022331}
   - component: {fileID: 231022330}
   - component: {fileID: 231022329}
+  - component: {fileID: 231022332}
   m_Layer: 5
   m_Name: saveMapBtn
   m_TagString: Untagged
@@ -898,6 +914,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 231022327}
   m_CullTransparentMesh: 0
+--- !u!114 &231022332
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 231022327}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 25ae801318f2cd94c852f7b1fa69461a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  infoGatherer: {fileID: 1250903637}
+  thisButton: save
 --- !u!1 &275721856 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6918293413444913122, guid: aa5597a05b2097748a2adedbc76b158b,
@@ -1541,6 +1571,7 @@ GameObject:
   - component: {fileID: 387908351}
   - component: {fileID: 387908350}
   - component: {fileID: 387908349}
+  - component: {fileID: 387908352}
   m_Layer: 5
   m_Name: backToStartBtn
   m_TagString: Untagged
@@ -1658,6 +1689,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 387908347}
   m_CullTransparentMesh: 0
+--- !u!114 &387908352
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 387908347}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 25ae801318f2cd94c852f7b1fa69461a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  infoGatherer: {fileID: 1250903637}
+  thisButton: start
 --- !u!1 &416360740
 GameObject:
   m_ObjectHideFlags: 0
@@ -1779,6 +1824,7 @@ GameObject:
   - component: {fileID: 427827562}
   - component: {fileID: 427827561}
   - component: {fileID: 427827560}
+  - component: {fileID: 427827563}
   m_Layer: 5
   m_Name: testBtn
   m_TagString: Untagged
@@ -1896,6 +1942,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 427827558}
   m_CullTransparentMesh: 0
+--- !u!114 &427827563
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 427827558}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 25ae801318f2cd94c852f7b1fa69461a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  infoGatherer: {fileID: 1250903637}
+  thisButton: test
 --- !u!1 &436172489
 GameObject:
   m_ObjectHideFlags: 0
@@ -2238,6 +2298,7 @@ GameObject:
   - component: {fileID: 543574055}
   - component: {fileID: 543574054}
   - component: {fileID: 543574053}
+  - component: {fileID: 543574056}
   m_Layer: 5
   m_Name: tryAgaintBtn
   m_TagString: Untagged
@@ -2355,6 +2416,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 543574051}
   m_CullTransparentMesh: 0
+--- !u!114 &543574056
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 543574051}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 25ae801318f2cd94c852f7b1fa69461a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  infoGatherer: {fileID: 1250903637}
+  thisButton: tryAgain
 --- !u!1 &651955363
 GameObject:
   m_ObjectHideFlags: 0
@@ -3606,6 +3681,7 @@ MonoBehaviour:
   boardInput: []
   currentBoards: []
   infoGatherer: {fileID: 1250903637}
+  winFields: 
 --- !u!4 &1394397927
 Transform:
   m_ObjectHideFlags: 0
@@ -4610,6 +4686,7 @@ GameObject:
   - component: {fileID: 1757375223}
   - component: {fileID: 1757375222}
   - component: {fileID: 1757375221}
+  - component: {fileID: 1757375224}
   m_Layer: 5
   m_Name: changeMapBtn
   m_TagString: Untagged
@@ -4727,6 +4804,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1757375219}
   m_CullTransparentMesh: 0
+--- !u!114 &1757375224
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1757375219}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 25ae801318f2cd94c852f7b1fa69461a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  infoGatherer: {fileID: 1250903637}
+  thisButton: change
 --- !u!1 &1806455147 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8053467521385641152, guid: aa5597a05b2097748a2adedbc76b158b,
@@ -4771,6 +4862,7 @@ GameObject:
   - component: {fileID: 1829850800}
   - component: {fileID: 1829850799}
   - component: {fileID: 1829850798}
+  - component: {fileID: 1829850801}
   m_Layer: 5
   m_Name: Close
   m_TagString: Untagged
@@ -4840,7 +4932,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1829850799}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1250903641}
+        m_MethodName: Exit
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1829850799
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4877,6 +4980,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1829850796}
   m_CullTransparentMesh: 0
+--- !u!114 &1829850801
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1829850796}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 25ae801318f2cd94c852f7b1fa69461a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  infoGatherer: {fileID: 1250903637}
+  thisButton: exit
 --- !u!1 &1839615358
 GameObject:
   m_ObjectHideFlags: 0
@@ -5681,6 +5798,18 @@ MonoBehaviour:
   win: They did it! Gotta love those little rascals.
   buildingTip: How about a map full of food?
   tutorialStart: Well, before saving the map you have to show it is possible.
+  createExpl: Click here to create your own map. You can save it afterwards and challenge
+    friends
+  closeExpl: I don't think I have to explain that...
+  tutExpl: Click one of these to play them. I recommend the tutorials.
+  testExpl: Click one of these to play them. I recommend the tutorials.
+  saveExpl: You did it. You now just need a catchy name. Like 'wolf canyon'.
+  changeExpl: You can change the map to make it easier. Or harder, but why would
+    you do that?
+  tryAgainExpl: Do you think you can do it next time?
+  startExpl: Well this one should be obvious.
+  idle1: I wonder how difficult it would be for me, to identify impossible maps...
+  idle2: Too bad you can't place more than one goals...
 --- !u!1 &2041051495 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3070331604908121377, guid: aa5597a05b2097748a2adedbc76b158b,
@@ -5761,6 +5890,7 @@ GameObject:
   - component: {fileID: 2080501159}
   - component: {fileID: 2080501158}
   - component: {fileID: 2080501157}
+  - component: {fileID: 2080501160}
   m_Layer: 5
   m_Name: Create
   m_TagString: Untagged
@@ -5878,6 +6008,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2080501155}
   m_CullTransparentMesh: 0
+--- !u!114 &2080501160
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2080501155}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 25ae801318f2cd94c852f7b1fa69461a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  infoGatherer: {fileID: 1250903637}
+  thisButton: create
 --- !u!1001 &4771305208104061101
 PrefabInstance:
   m_ObjectHideFlags: 0

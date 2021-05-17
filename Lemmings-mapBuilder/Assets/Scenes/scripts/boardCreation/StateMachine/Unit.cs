@@ -91,7 +91,6 @@ public class Unit : MonoBehaviour
         stateMachine.ChangeState(new PlayState(this, save));
         infoGatherer.sendState(oldest_state.Playing);
     }
-
     public Save CreateSave(string name, List<Board> boards)
     {
         Save save = new Save();
@@ -201,6 +200,7 @@ public class Unit : MonoBehaviour
             Destroy(board.lemming.GetComponent<CircleCollider2D>());
         }
     }
+
     public void fillScrollView()
     {
         mapListSaveManager.loadList();

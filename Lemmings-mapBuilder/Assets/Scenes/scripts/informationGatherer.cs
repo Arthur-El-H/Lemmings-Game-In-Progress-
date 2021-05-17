@@ -75,6 +75,22 @@ public class informationGatherer : MonoBehaviour        //Gathers information fo
         }
         Debug.Log("current distance to win is " + result);
     }
+
+    public void hoveringOverButton(string button)
+    {
+        switch (button)
+        {
+            case "create": oldest.getMessage(databank.createExpl); break;
+            case "exit": oldest.getMessage(databank.closeExpl); break;
+            case "scrollView": oldest.getMessage(databank.tutExpl); break;
+            case "test": oldest.getMessage(databank.testExpl); break;
+            case "save": oldest.getMessage(databank.saveExpl); break;
+            case "change": oldest.getMessage(databank.changeExpl); break;
+            case "tryAgain": oldest.getMessage(databank.tryAgainExpl); break;
+            case "start": oldest.getMessage(databank.startExpl); break;
+
+        }
+    }
     void Start()
     {
         

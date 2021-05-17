@@ -28,6 +28,7 @@ public class BoardBuilder : MonoBehaviour
         boards = buildBoards(save.boardTags.Count);
         for (int f = 0; f < save.boardTags.Count; f++ )  //foreach list of strings
         {
+            boards[f].zielCount = 1;
             for (int i = 0; i < save.boardTags[f].Count; i++)  //foreach string in specific list
             {
                 currentTag = save.boardTags[f][i];
