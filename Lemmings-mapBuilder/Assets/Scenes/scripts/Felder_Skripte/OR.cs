@@ -50,10 +50,10 @@ public class OR : MonoBehaviour, IFeld
     {
         switch (direction)
         {
-            case Direction.Up: return false;
-            case Direction.Down: return true;
-            case Direction.Left: return true;
-            case Direction.Right: return false;
+            case Direction.Up: return true;
+            case Direction.Down: return false;
+            case Direction.Left: return false;
+            case Direction.Right: return true;
         }
         return false;
     }
